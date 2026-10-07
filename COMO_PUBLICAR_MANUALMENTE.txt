@@ -1,0 +1,42 @@
+﻿Passo a passo: publicar matéria manualmente
+
+1. Configurar Supabase
+   - Acesse https://supabase.com → seu projeto → SQL Editor → New query
+   - Cole todo o conteúdo de supabase/schema.sql deste projeto e clique em Executar
+   - Vá em Authentication → Users → Add user e crie um e-mail + senha
+
+2. Arquivo .env.local
+   Já está configurado com NEXT_PUBLIC_SUPABASE_URL e NEXT_PUBLIC_SUPABASE_ANON_KEY.
+   Faltando apenas GEMINI_API_KEY (opcional para gerar com IA).
+
+3. Iniciar o site
+   npm run dev
+   Acesse: http://localhost:3000
+
+4. Acessar o painel
+   http://localhost:3000/admin → redireciona para http://localhost:3000/admin/login
+   Faça login com e-mail e senha criados no Supabase
+
+5. Criar matéria manual
+   No painel: + Nova matéria → aba Escrever manualmente
+
+   Preencher:
+   - Título (obrigatório)
+   - Linha fina (resumo curto)
+   - Editoria
+   - Tags (separadas por vírgula)
+   - Autor (padrão: Redação)
+   - Capa: Enviar imagem (bucket covers no Supabase) OU colar URL
+   - Descrição da imagem (alt) – acessibilidade
+   - URL da matéria (/materia/) – vazio gera automático
+   - Destacar na home – opcional
+   - Corpo – editor com H2, Negrito, Itálico, Citação, Listas, Link
+
+   Ações:
+   - Salvar rascunho (só no painel)
+   - Salvar e publicar (vai para o site)
+
+6. Conferir
+   Após publicar, clique em Ver no site ou acesse /materia/SLUG
+
+Observação: se ainda não executou o SQL, aparece 'Configuração pendente'. Execute o SQL e recarregue.
