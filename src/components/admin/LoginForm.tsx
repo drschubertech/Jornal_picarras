@@ -8,6 +8,7 @@ function LoginFormInner() {
   const searchParams = useSearchParams();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -52,14 +53,23 @@ function LoginFormInner() {
 
       <label className="grid gap-1.5 text-sm font-semibold text-ink-2">
         Senha
-        <input
-          type="password"
-          required
-          autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="border border-rule-2 bg-paper px-3 py-2.5 text-base text-ink focus:border-ink focus:outline-none"
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? 'text' : 'password'}
+            required
+            autoComplete="current-password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-rule-2 bg-paper px-3 py-2.5 pr-10 text-base text-ink focus:border-ink focus:outline-none"
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword((v) => !v)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-sm px-1 text-xs font-semibold uppercase tracking-wide text-ink-3 transition-colors hover:text-ink"
+          >
+            {showPassword ? 'Ocultar' : 'Mostrar'}
+          </button>
+        </div>
       </label>
 
       {error && (
