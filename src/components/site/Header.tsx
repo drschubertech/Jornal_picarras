@@ -13,7 +13,7 @@ export function Header() {
           <div className="flex items-center gap-4 text-[0.78rem]">
             <span className="hidden sm:inline">{SITE.region}</span>
             <Link
-              href="/admin"
+              href="/admin/login"
               className="font-semibold text-ink-2 transition-colors hover:text-brand"
             >
               Painel da redação
